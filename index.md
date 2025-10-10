@@ -1,0 +1,1 @@
+Publishing some articles about thing I discover during my work I wish someone told me about it earlier, so I could save some of my precious time.

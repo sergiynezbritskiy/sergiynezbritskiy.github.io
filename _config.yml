@@ -1,0 +1,42 @@
+title: "Sergey Nezbritskiy Personal Blog"
+author: "Sergey Nezbritskiy"
+description: "Just casual posts about engineering." # This will show up in places like twitter, linkedin, etc, if you share your sites url as a post.
+
+# Email / Social media user names used by the minima theme:
+# All of these are optional and can be removed or commented out
+#email: "example@mail.com"
+#twitter_username: "twitteruser"
+github_username: "sergeynezbritskiy"
+linkedin_username: "sergeynezbritskiy"
+facebook_username: sergeynezbritskiy
+#flickr_username: username
+instagram_username: sergeynezbritskiy
+#pinterest_username: username
+#youtube_username: username
+#googleplus_username: +username
+
+#########################################################################################
+######### Nothing below needs to be changed (unless you know what you're doing) #########
+#########################################################################################
+theme: "minima"
+
+rss: rss
+
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+titles_from_headings:
+  strip_title: true
+  collections: true
+
+defaults:
+  - scope:
+      path: ""
+      type: post
+    values:
+      tags: Other

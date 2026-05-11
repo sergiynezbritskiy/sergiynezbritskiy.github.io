@@ -44,7 +44,7 @@ First, we need to add a dependency on the `Magento_Checkout` module.
 ```xml
 <?xml version = "1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="SergeyNezbritskiy_CustomAddressField" setup_version="1.0.0">
+    <module name="SergiyNezbritskiy_CustomAddressField" setup_version="1.0.0">
         <sequence>
             <module name="Magento_Customer"/>
             <module name="Magento_Checkout"/> <!-- This is what we've added -->
@@ -61,7 +61,7 @@ Define our plugin in `di.xml`:
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="\Magento\Checkout\Block\Checkout\AttributeMerger">
-        <plugin name="sn_fix_data_scope" type="SergeyNezbritskiy\CustomAddressField\Plugin\Checkout\AttributeMergerPlugin"/>
+        <plugin name="sn_fix_data_scope" type="SergiyNezbritskiy\CustomAddressField\Plugin\Checkout\AttributeMergerPlugin"/>
     </type>
 </config>
 ```
@@ -75,7 +75,7 @@ Within the plugin, fix the dataScope for our attribute:
 
 declare(strict_types=1);
 
-namespace SergeyNezbritskiy\CustomAddressField\Plugin\Checkout;
+namespace SergiyNezbritskiy\CustomAddressField\Plugin\Checkout;
 
 use Magento\Checkout\Block\Checkout\AttributeMerger;
 
@@ -131,7 +131,7 @@ This occurs because customAttributes properties do not store labels (though they
 
 declare(strict_types=1);
 
-namespace SergeyNezbritskiy\CustomAddressField\Plugin\Checkout;
+namespace SergiyNezbritskiy\CustomAddressField\Plugin\Checkout;
 
 use Magento\Checkout\Block\Checkout\AttributeMerger;
 
@@ -211,10 +211,10 @@ let config = {
     config: {
         mixins: {
             'Magento_Checkout/js/action/set-shipping-information': {
-                'SergeyNezbritskiy_CustomAddressField/js/action/set-extension-attributes-mixin': true
+                'SergiyNezbritskiy_CustomAddressField/js/action/set-extension-attributes-mixin': true
             },
             'Magento_Checkout/js/action/place-order': {
-                'SergeyNezbritskiy_CustomAddressField/js/action/set-extension-attributes-mixin': true
+                'SergiyNezbritskiy_CustomAddressField/js/action/set-extension-attributes-mixin': true
             }
         }
     }
@@ -227,7 +227,7 @@ let config = {
 define([
     'mage/utils/wrapper',
     'Magento_Checkout/js/model/quote',
-    'SergeyNezbritskiy_CustomAddressField/js/model/extension-attribute-processor'
+    'SergiyNezbritskiy_CustomAddressField/js/model/extension-attribute-processor'
 ], function (wrapper, quote, processExtensionAttribute) {
     'use strict';
 
@@ -264,7 +264,7 @@ For this, we simply need to add an `etc/extension_attributes.xml` file. Before d
 ```xml
 <?xml version = "1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="SergeyNezbritskiy_CustomAddressField" setup_version="1.0.0">
+    <module name="SergiyNezbritskiy_CustomAddressField" setup_version="1.0.0">
         <sequence>
             <module name="Magento_Customer"/>
             <module name="Magento_Checkout"/>
@@ -328,11 +328,11 @@ Additionally, let's ensure that every time we retrieve extension attributes, our
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="\Magento\Checkout\Block\Checkout\AttributeMerger">
-        <plugin name="sn_fix_data_scope" type="SergeyNezbritskiy\CustomAddressField\Plugin\Checkout\AttributeMergerPlugin"/>
+        <plugin name="sn_fix_data_scope" type="SergiyNezbritskiy\CustomAddressField\Plugin\Checkout\AttributeMergerPlugin"/>
     </type>
     <!-- This plugin has been added -->
     <type name="\Magento\Quote\Model\Quote\Address">
-        <plugin name="sn_convert_extension_attributes" type="SergeyNezbritskiy\CustomAddressField\Plugin\Quote\AddressPlugin"/>
+        <plugin name="sn_convert_extension_attributes" type="SergiyNezbritskiy\CustomAddressField\Plugin\Quote\AddressPlugin"/>
     </type>
 </config>
 ```
@@ -344,7 +344,7 @@ Additionally, let's ensure that every time we retrieve extension attributes, our
 
 declare(strict_types=1);
 
-namespace SergeyNezbritskiy\CustomAddressField\Plugin\Quote;
+namespace SergiyNezbritskiy\CustomAddressField\Plugin\Quote;
 
 use Magento\Quote\Api\Data\AddressExtension;
 use Magento\Quote\Api\Data\AddressExtensionInterface;

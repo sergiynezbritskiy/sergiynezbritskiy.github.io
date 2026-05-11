@@ -13,11 +13,11 @@ At first glance, adding a custom attribute to a customer address in Magento 2 se
 
 This article guides you through the full process of implementing a custom customer address attribute in Magento 2. Divided into three parts, it covers everything from defining the attribute and adding options to making it visible and functional across checkout, order details, and the customer account dashboard.
 
-Of course, if you’d rather skip the long setup, there’s a shortcut: you can download the ready-made module [here](https://github.com/sergeynezbritskiy/module-custom-address-field), rename the `custom_field` attribute to whatever you need, maybe add some adjustments, and it’s ready to go. But for those who want to understand the "why" and "how", this guide walks through every necessary step.
+Of course, if you’d rather skip the long setup, there’s a shortcut: you can download the ready-made module [here](https://github.com/sergiynezbritskiy/module-custom-address-field), rename the `custom_field` attribute to whatever you need, maybe add some adjustments, and it’s ready to go. But for those who want to understand the "why" and "how", this guide walks through every necessary step.
 
 ### Prerequisites
 
-For this tutorial, we’ll need a vanilla Magento 2 installation with sample data. All filenames are relative to `app/code/SergeyNezbritskiy/CustomShippingAddress`.
+For this tutorial, we’ll need a vanilla Magento 2 installation with sample data. All filenames are relative to `app/code/SergiyNezbritskiy/CustomShippingAddress`.
 
 ### Task
 
@@ -25,7 +25,7 @@ A custom address attribute must be added to the customer address entity. The att
 
 ### Step 1. Create a Module
 
-Create a module named `SergeyNezbritskiy_CustomAddressField`.
+Create a module named `SergiyNezbritskiy_CustomAddressField`.
 
 **File:** `registration.php`
 
@@ -36,7 +36,7 @@ declare(strict_types=1);
 
 use Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'SergeyNezbritskiy_CustomAddressField', __DIR__);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'SergiyNezbritskiy_CustomAddressField', __DIR__);
 ```
 
 **File:** `etc/module.xml`
@@ -44,7 +44,7 @@ ComponentRegistrar::register(ComponentRegistrar::MODULE, 'SergeyNezbritskiy_Cust
 ```xml
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="SergeyNezbritskiy_CustomAddressField" setup_version="1.0.0"/>
+    <module name="SergiyNezbritskiy_CustomAddressField" setup_version="1.0.0"/>
 </config>
 ```
 
@@ -63,7 +63,7 @@ You should see the module listed and enabled in `app/etc/config.php`, for exampl
 return [
     'modules' => [
         // Other modules in your project
-        'SergeyNezbritskiy_CustomAddressField' => 1,
+        'SergiyNezbritskiy_CustomAddressField' => 1,
         // Other modules in your project
     ]
 ];
@@ -78,7 +78,7 @@ Add a module dependency for `Magento_Customer` in `module.xml`.
 ```xml
 <?xml version = "1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="SergeyNezbritskiy_CustomAddressField" setup_version="1.0.0">
+    <module name="SergiyNezbritskiy_CustomAddressField" setup_version="1.0.0">
         <sequence>
             <module name="Magento_Customer"/>
         </sequence>
@@ -95,7 +95,7 @@ Create a source model for the attribute options.
 
 declare(strict_types=1);
 
-namespace SergeyNezbritskiy\CustomAddressField\Model\Address\Attribute\Source;
+namespace SergiyNezbritskiy\CustomAddressField\Model\Address\Attribute\Source;
 
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 
@@ -117,7 +117,7 @@ Next, create a data patch to define the attribute.
 
 declare(strict_types=1);
 
-namespace SergeyNezbritskiy\CustomAddressField\Setup\Patch\Data;
+namespace SergiyNezbritskiy\CustomAddressField\Setup\Patch\Data;
 
 use Magento\Customer\Model\Indexer\Address\AttributeProvider;
 use Magento\Customer\Setup\CustomerSetup;
@@ -126,7 +126,7 @@ use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchRevertableInterface;
-use SergeyNezbritskiy\CustomAddressField\Model\Address\Attribute\Source\CustomField;
+use SergiyNezbritskiy\CustomAddressField\Model\Address\Attribute\Source\CustomField;
 
 readonly class CreateShippingAttribute implements DataPatchInterface, PatchRevertableInterface
 {
@@ -218,7 +218,7 @@ Now let’s add some options to the attribute source file.
 
 declare(strict_types=1);
 
-namespace SergeyNezbritskiy\CustomAddressField\Model\Address\Attribute\Source;
+namespace SergiyNezbritskiy\CustomAddressField\Model\Address\Attribute\Source;
 
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 
@@ -296,7 +296,7 @@ The address template can be configured in Admin Dashboard: `Stores` -> `Settings
 
 declare(strict_types=1);
 
-namespace SergeyNezbritskiy\CustomAddressField\Setup\Patch\Data;
+namespace SergiyNezbritskiy\CustomAddressField\Setup\Patch\Data;
 
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;

@@ -65,14 +65,14 @@ However, this approach does not work as expected, so I added an additional plugi
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="\Magento\Checkout\Block\Checkout\AttributeMerger">
-        <plugin name="sn_fix_data_scope" type="SergeyNezbritskiy\CustomAddressField\Plugin\Checkout\AttributeMergerPlugin"/>
+        <plugin name="sn_fix_data_scope" type="SergiyNezbritskiy\CustomAddressField\Plugin\Checkout\AttributeMergerPlugin"/>
     </type>
     <type name="\Magento\Quote\Model\Quote\Address">
-        <plugin name="sn_convert_extension_attributes" type="SergeyNezbritskiy\CustomAddressField\Plugin\Quote\AddressPlugin"/>
+        <plugin name="sn_convert_extension_attributes" type="SergiyNezbritskiy\CustomAddressField\Plugin\Quote\AddressPlugin"/>
     </type>
     <!-- added new plugin -->
     <type name="\Magento\Quote\Model\Quote\Address\ToOrderAddress">
-        <plugin name="sn_quote_to_order" type="SergeyNezbritskiy\CustomAddressField\Plugin\QuoteAddressToOrderAddress\ToOrderAddressConverterPlugin"/>
+        <plugin name="sn_quote_to_order" type="SergiyNezbritskiy\CustomAddressField\Plugin\QuoteAddressToOrderAddress\ToOrderAddressConverterPlugin"/>
     </type>
 </config>
 ```
@@ -84,7 +84,7 @@ However, this approach does not work as expected, so I added an additional plugi
 
 declare(strict_types=1);
 
-namespace SergeyNezbritskiy\CustomAddressField\Plugin\QuoteAddressToOrderAddress;
+namespace SergiyNezbritskiy\CustomAddressField\Plugin\QuoteAddressToOrderAddress;
 
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Address\ToOrderAddress;
@@ -202,17 +202,17 @@ First, we need to configure Magento (the `\Magento\Framework\DataObject\Copy` ob
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="\Magento\Checkout\Block\Checkout\AttributeMerger">
-        <plugin name="sn_fix_data_scope" type="SergeyNezbritskiy\CustomAddressField\Plugin\Checkout\AttributeMergerPlugin"/>
+        <plugin name="sn_fix_data_scope" type="SergiyNezbritskiy\CustomAddressField\Plugin\Checkout\AttributeMergerPlugin"/>
     </type>
     <type name="\Magento\Quote\Model\Quote\Address">
-        <plugin name="sn_convert_extension_attributes" type="SergeyNezbritskiy\CustomAddressField\Plugin\Quote\AddressPlugin"/>
+        <plugin name="sn_convert_extension_attributes" type="SergiyNezbritskiy\CustomAddressField\Plugin\Quote\AddressPlugin"/>
     </type>
     <type name="\Magento\Quote\Model\Quote\Address\ToOrderAddress">
-        <plugin name="sn_quote_to_order" type="SergeyNezbritskiy\CustomAddressField\Plugin\QuoteAddressToOrderAddress\ToOrderAddressConverterPlugin"/>
+        <plugin name="sn_quote_to_order" type="SergiyNezbritskiy\CustomAddressField\Plugin\QuoteAddressToOrderAddress\ToOrderAddressConverterPlugin"/>
     </type>
     <!-- This section has been added -->
     <type name="\Magento\Customer\Model\Session">
-        <plugin name="sn_restore_custom_attributes" type="SergeyNezbritskiy\CustomAddressField\Plugin\Session\OrderToCustomerPlugin"/>
+        <plugin name="sn_restore_custom_attributes" type="SergiyNezbritskiy\CustomAddressField\Plugin\Session\OrderToCustomerPlugin"/>
     </type>
 </config>
 
@@ -225,7 +225,7 @@ First, we need to configure Magento (the `\Magento\Framework\DataObject\Copy` ob
 
 declare(strict_types=1);
 
-namespace SergeyNezbritskiy\CustomAddressField\Plugin\Session;
+namespace SergiyNezbritskiy\CustomAddressField\Plugin\Session;
 
 use Magento\Customer\Model\Session;
 
